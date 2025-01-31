@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FESTIVAL LITTERAIRE</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="modal" id="registrationModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Identifiez-vous</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="registerForm">
+              <div class="form-group">
+                <label for="registrationUsername">Nom utilisateur</label>
+                <input
+                  name="registrationUsername"
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="Entre ton nom utilisateur"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Entre ton mot de passe"
+                  required
+                />
+              </div>
+              <button
+                id="sidentifier"
+                type="submit"
+                name="identifier"
+                class="btn btn-primary btn-block"
+              >
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="signupModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Créer un compte</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <form name="signupForm" id="signupForm">
+              <div class="form-group">
+                <label for="signupLastName">Nom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signupLastName"
+                  name="signupLastname"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupFirstName">Prénom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signupFirstName"
+                  name="signupFirstName"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupUsername">Nom d'utilisateur</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signupUsername"
+                  name="signupUsername"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signupEmail"
+                  name="signupEmail"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">Mot de passe</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signupPassword"
+                  name="signupPassword"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupConfirmPassword"
+                  >Confirmer le mot de passe</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signupConfirmPassword"
+                  name="signupConfirmPassword"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupPhone">Téléphone</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="signupPhone"
+                  name="signupPhone"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupAddress">Adresse</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signupAddress"
+                  name="signupAddress"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="signupRole">Rôle</label>
+                <select class="form-control" id="signupRole" name="signupRole">
+                  <option>Accompagnateur</option>
+                  <option>Auteur</option>
+                  <option>Interprète</option>
+                  <option>Etablissement</option>
+                </select>
+              </div>
+
+              <!-- Ajouté dans le formulaire d'inscription déjà existant -->
+              <div id="authorDetails" style="display: none">
+                <div class="mb-3">
+                  <label for="authorBio" class="form-label">Biographie</label>
+
+                  <textarea
+                    name="authorBio"
+                    class="form-control"
+                    id="authorBio"
+                    rows="3"
+                    placeholder="Dites nous en un peu plus sur vous ..."
+                  ></textarea>
+                </div>
+                <label class="form-label">Langues Parlées:</label>
+                <div class="mb-3">
+                  <!-- Langues Parlées -->
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage1"
+                      name="spokenLanguages[]"
+                      value="en"
+                    />
+                    <label class="form-check-label" for="spokenLanguage1"
+                      >Anglais</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage2"
+                      name="spokenLanguages[]"
+                      value="es"
+                    />
+                    <label class="form-check-label" for="spokenLanguage2"
+                      >Espagnol</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage3"
+                      name="spokenLanguages[]"
+                      value="fr"
+                    />
+                    <label class="form-check-label" for="spokenLanguage3"
+                      >Français</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage4"
+                      name="spokenLanguages[]"
+                      value="de"
+                    />
+                    <label class="form-check-label" for="spokenLanguage4"
+                      >Allemand</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage5"
+                      name="spokenLanguages[]"
+                      value="zh"
+                    />
+                    <label class="form-check-label" for="spokenLanguage5"
+                      >Chinois</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage6"
+                      name="spokenLanguages[]"
+                      value="hi"
+                    />
+                    <label class="form-check-label" for="spokenLanguage6"
+                      >Hindi</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spokenLanguage7"
+                      name="spokenLanguages[]"
+                      value="ar"
+                    />
+                    <label class="form-check-label" for="spokenLanguage7"
+                      >Arabe</label
+                    >
+                  </div>
+                </div>
+
+                <label class="form-label">Langues Écrites:</label>
+                <div class="mb-3">
+                  <!-- Langues Écrites -->
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage1"
+                      name="writtenLanguages[]"
+                      value="en"
+                    />
+                    <label class="form-check-label" for="writtenLanguage1"
+                      >Anglais</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage2"
+                      name="writtenLanguages[]"
+                      value="es"
+                    />
+                    <label class="form-check-label" for="writtenLanguage2"
+                      >Espagnol</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage3"
+                      name="writtenLanguages[]"
+                      value="fr"
+                    />
+                    <label class="form-check-label" for="writtenLanguage3"
+                      >Français</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage4"
+                      name="writtenLanguages[]"
+                      value="de"
+                    />
+                    <label class="form-check-label" for="writtenLanguage4"
+                      >Allemand</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage5"
+                      name="writtenLanguages[]"
+                      value="zh"
+                    />
+                    <label class="form-check-label" for="writtenLanguage5"
+                      >Chinois</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage6"
+                      name="writtenLanguages[]"
+                      value="hi"
+                    />
+                    <label class="form-check-label" for="writtenLanguage6"
+                      >Hindi</label
+                    >
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="writtenLanguage7"
+                      name="writtenLanguages[]"
+                      value="ar"
+                    />
+                    <label class="form-check-label" for="writtenLanguage7"
+                      >Arabe</label
+                    >
+                  </div>
+                </div>
+
+                <h4>Informations sur les ouvrages</h4>
+                <div id="booksContainer">
+                  <!-- Les champs pour les ouvrages seront ajoutés ici par JavaScript -->
+                </div>
+
+                <button type="button" id="addBook">Ajouter un ouvrage</button>
+              </div>
+              <div id="interpreterDetails" style="display: none"></div>
+              <div id="etablissementDetails" style="display: none"></div>
+              <button type="submit" class="btn btn-primary" name="submit">
+                Créer un compte
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="container">
+        <h1>Festival Litteraire</h1>
+        <nav>
+          <ul>
+            <li><a href="#" id="accueilLink">Accueil</a></li>
+            <li><a href="#" id="navAuthors">Auteurs</a></li>
+            <li><a href="#" id="navBooks">Ouvrages</a></li>
+            <li><a href="#" id="editionLink">Editions</a></li>
+            <li><a href="#">statistiques</a></li>
+            <li><a href="#" id="contactLink">Contact</a></li>
+            <li><a href="#" id="registerBtn">S'identifier</a></li>
+            <li><a href="#" id="signupLink">S'inscrire</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <div id="etablissementContainer" class="container"></div>
+      ;
+
+      <div
+        class="modal fade"
+        id="createEditionModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="createEditionModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createEditionModalLabel">
+                Créer Édition
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="createEditionForm">
+                <div class="form-group">
+                  <label for="editionName">Nom de l'édition</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="editionName"
+                    name="editionName"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="editionYear">Année de l'édition</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="editionYear"
+                    name="editionYear"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="startDate">Date de début</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="startDate"
+                    name="startDate"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="endDate">Date de fin</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="endDate"
+                    name="endDate"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  name="createEdition"
+                  class="btn btn-primary"
+                >
+                  Créer l'édition
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal pour créer une édition -->
+      <div class="modal" id="createInterventionModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Header du modal -->
+            <div class="modal-header">
+              <h5 class="modal-title">Créer une intervention</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+            <!-- Corps du modal avec le formulaire -->
+            <div class="modal-body">
+              <form id="createInterventionForm">
+                <div class="form-group">
+                  <label for="auteurSelect">Auteur intervenant</label>
+                  <select
+                    class="form-control"
+                    name="auteurSelect"
+                    id="auteurSelect"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label for="etablissementSelect">Etablissement</label>
+                  <select
+                    class="form-control"
+                    name="etablissementSelect"
+                    id="etablissementSelect"
+                  ></select>
+                </div>
+
+                <div class="form-group">
+                  <label for="accompagnateurSelect">Accompagnateur</label>
+                  <select
+                    class="form-control"
+                    name="accompagnateurSelect"
+                    id="accompagnateurSelect"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label for="interpreteSelect">Interprète</label>
+                  <select
+                    class="form-control"
+                    name="interpreteSelect"
+                    id="interpreteSelect"
+                  ></select>
+                </div>
+
+                <div class="form-group">
+                  <label for="interventionDate">Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="interventionDate"
+                    name="interventionDate"
+                    required
+                  />
+                </div>
+                <!-- Champ de lieu -->
+                <div class="form-group">
+                  <label for="location">Lieu</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="location"
+                    required
+                  />
+                </div>
+                <!-- Champ d'heure de début -->
+                <div class="form-group">
+                  <label for="startTime">Heure de début</label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="startTime"
+                    name="startTime"
+                    required
+                  />
+                </div>
+                <!-- Champ d'heure de fin -->
+                <div class="form-group">
+                  <label for="endTime">Heure de fin</label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="endTime"
+                    name="endTime"
+                    required
+                  />
+                </div>
+                <!-- Autres champs de formulaire -->
+                <!-- Bouton de soumission -->
+                <button
+                  type="submit"
+                  name="createIntervention"
+                  class="btn btn-primary"
+                >
+                  Créer
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Festival Litteraire</p>
+      </div>
+    </footer>
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

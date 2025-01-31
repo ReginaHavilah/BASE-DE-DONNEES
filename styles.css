@@ -1,0 +1,151 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.work {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.work h3 {
+  margin-top: 0;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+.author-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  width: 200px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.author-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.author-card h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.author-card p {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.book-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  width: 300px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-card h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.book-card p {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #666;
+}
+#mainContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.container_main {
+  display: flex;
+}
+
+.block {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.block:hover {
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 48px;
+  color: #007bff;
+}
+
+.text {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
